@@ -14,7 +14,7 @@ export default {
   name: 'ArtistsDisc',
   props: {
         discInfo: Object,
-    }
+    },
 }
 </script>
 
@@ -22,7 +22,7 @@ export default {
 <style scoped lang="scss">
     .card-disc {
         background-color: #303A45;
-        padding: 10px;
+        padding: 20px;
         text-align: center;
         & img {
             width: 100%;

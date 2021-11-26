@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <Loader/>
+
     <AppHeader/>
 
     <AppMain/>
@@ -9,13 +11,15 @@
 </template>
 
 <script>
-import AppHeader from './components/AppHeader.vue'
-import AppMain from './components/AppMain.vue'
-import AppFooter from './components/AppFooter.vue'
+import Loader from './components/Loader.vue';
+import AppHeader from './components/AppHeader.vue';
+import AppMain from './components/AppMain.vue';
+import AppFooter from './components/AppFooter.vue';
 
 export default {
   name: 'App',
   components: {
+    Loader,
     AppHeader,
     AppMain,
     AppFooter,

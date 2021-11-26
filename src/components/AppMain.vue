@@ -25,10 +25,10 @@ export default {
     },
     created () {
         axios
-        .get('https://flynn.boolean.careers/exercises/api/array/music')
-        .then((apiObj) => {
+            .get('https://flynn.boolean.careers/exercises/api/array/music')
+            .then((apiObj) => {
             this.discsArr = apiObj.data.response;
-        })
+        })            
     }
 }
 </script>
@@ -38,6 +38,8 @@ export default {
     main {
         background-color: #212D3A;
         padding: 50px 0;
+        height: 100vh;
+        overflow: auto;
     }
     #discs {
         width: 70%;
