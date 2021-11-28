@@ -1,7 +1,9 @@
 <template>
     <div class="card-disc">
-        <img :src="discInfo.poster" :alt="discInfo.title">
-        <h3> {{discInfo.title}}</h3>
+        <div>
+            <img :src="discInfo.poster" :alt="discInfo.title">
+            <h3> {{discInfo.title}}</h3>
+        </div>
         <div class="disc-info">
             <span>{{discInfo.author}}</span>
             <span>{{discInfo.year}}</span>
@@ -21,8 +23,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
     .card-disc {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
         background-color: #303A45;
-        padding: 20px;
+        padding: 1.5em;
+        min-height: 38ch;
         text-align: center;
         & img {
             width: 100%;
@@ -31,7 +37,7 @@ export default {
         }
         & h3 {
             color: #fff;
-            margin: 30px 0;
+            margin-top: 1rem;
         }
     }
     .disc-info {
@@ -40,5 +46,4 @@ export default {
             color: #79756F;
         }
     }
-
 </style>

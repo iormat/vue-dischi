@@ -23,7 +23,7 @@ export default {
             discsArr : [],
         }
     },
-    created () {
+    mounted () {
         axios
             .get('https://flynn.boolean.careers/exercises/api/array/music')
             .then((apiObj) => {
