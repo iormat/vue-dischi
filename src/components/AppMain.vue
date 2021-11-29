@@ -1,9 +1,9 @@
 <template>
     <main>
-        <DiscsFilter/>
+        <DiscsFilter @getResults="filteredDiscsArr"/>
         <section id="discs">
             <ArtistsDisc
-            v-for="disc,i in discsArr" :key="i"
+            v-for="disc,i in showFiltered" :key="i"
             :discInfo="disc"
             />
         </section>
@@ -23,17 +23,38 @@ export default {
     },
     data() {
         return {
+            chosenGenre : "All",
             discsArr : [],
             apiUrl : 'https://flynn.boolean.careers/exercises/api/array/music',
         }
     },
-    mounted () {
+    // get API
+    created () {
         axios
             .get(this.apiUrl)
             .then((apiObj) => {
             this.discsArr = apiObj.data.response;
-        })            
+        }) 
     },
+    // save child variable in parent data
+    methods: {
+        filteredDiscsArr(gotSelected) {
+            this.chosenGenre = gotSelected;
+        }
+    },
+    // check array to get only related results
+    computed: {
+        showFiltered() {
+            if(this.chosenGenre === "All") {
+                return this.discsArr;
+            }
+            return this.discsArr.filter((item) => {
+                if(item.genre === this.chosenGenre){
+                    return this.discsArr
+                }
+            })
+        }
+    }
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
     <div class="filter">
-        <select>
+        <select v-model="selected" @change="$emit('getResults', selected)">
             <option selected value="All">All</option>
             <option value="Rock"> Rock </option>
             <option value="Pop"> Pop </option>
@@ -14,8 +14,12 @@
 <script>
 export default {
     name: 'DiscsFilter',
+    data() {
+        return {
+            selected: "All",
+        }
+    },
 }
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
