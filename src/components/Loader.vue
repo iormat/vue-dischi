@@ -10,19 +10,19 @@
 <script>
 export default {
     name: 'Loader',
-    data() {
-      return {
-        Loaded : false,
-      }
-    },
-    mounted() {
-      document.onreadystatechange = () => {
-        if(document.readyState == 'complete') {
-            this.Loaded = true;
-        }
-      }
-    }
-  }
+		data() {
+			return {
+				Loaded : false,
+			}
+		},
+		mounted() {
+			document.onreadystatechange = () => {
+				if(document.readyState == 'complete') {
+					this.Loaded = true;
+				}
+			}
+		}
+}
 
 </script>
 

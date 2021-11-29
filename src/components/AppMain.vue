@@ -1,5 +1,6 @@
 <template>
     <main>
+        <DiscsFilter/>
         <section id="discs">
             <ArtistsDisc
             v-for="disc,i in discsArr" :key="i"
@@ -10,6 +11,7 @@
 </template>
 
 <script>
+import DiscsFilter from "./DiscsFilter.vue";
 import ArtistsDisc from "./ArtistsDisc.vue";
 import axios from "axios";
 
@@ -17,19 +19,21 @@ export default {
     name: 'AppMain',
     components: {
         ArtistsDisc,
+        DiscsFilter,
     },
     data() {
         return {
             discsArr : [],
+            apiUrl : 'https://flynn.boolean.careers/exercises/api/array/music',
         }
     },
     mounted () {
         axios
-            .get('https://flynn.boolean.careers/exercises/api/array/music')
+            .get(this.apiUrl)
             .then((apiObj) => {
             this.discsArr = apiObj.data.response;
         })            
-    }
+    },
 }
 </script>
 
