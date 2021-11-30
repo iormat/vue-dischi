@@ -2,9 +2,9 @@
 	<div id="app">
 		<Loader/>
 
-        <AppHeader @getResults="filteredDiscsArr"/>
+        <AppHeader @getResults="filteredDiscsArr" :genres="genresArr"/>
 
-		<AppMain :selectedGenre="genreToSearch"/>
+		<AppMain :selectedGenre="genreToSearch" @genreOptions="getGenresArr"/>
 
 		<AppFooter/>
 	</div>
@@ -27,12 +27,16 @@ export default {
 	data() {
 		return {
 			genreToSearch: "All",
+			genresArr: [],
 		}
 	},
 	methods : {
 		// save child variable in parent data
 		filteredDiscsArr(chosenGenre) {
 			this.genreToSearch = chosenGenre
+		},
+		getGenresArr(allGenres) {
+			this.genresArr = allGenres;
 		}
 	}
 }

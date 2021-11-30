@@ -23,7 +23,7 @@ export default {
     },
     data() {
         return {
-            chosenGenre : "All",
+            genresArr: [],
             discsArr : [],
             apiUrl : 'https://flynn.boolean.careers/exercises/api/array/music',
         }
@@ -38,10 +38,18 @@ export default {
         // get API's content funtion
         getApiInfo: function (){
             axios
-                .get(this.apiUrl)
-                .then((apiObj) =>  {
+            .get(this.apiUrl)
+            .then((apiObj) =>  {
                 this.discsArr = apiObj.data.response;
+                //get genres list
+                this.discsArr.filter((item) => {
+                    if(!this.genresArr.includes(item.genre)){
+                        this.genresArr.push(item.genre);
+                    }
+                })
             })
+            // used to send genreArray info to parent(App)
+            this.$emit('genreOptions', this.genresArr)
         },
     },
     computed: {

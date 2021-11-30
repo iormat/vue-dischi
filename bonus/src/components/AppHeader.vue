@@ -4,10 +4,7 @@
         <div class="filter">
             <select v-model="selected" @change="$emit('getResults', selected)">
                 <option selected value="All">All</option>
-                <option value="Rock"> Rock </option>
-                <option value="Pop"> Pop </option>
-                <option value="Metal"> Metal </option>
-                <option value="Jazz"> Jazz </option>
+                <option v-for="genre, i in genres" :key="i" :value="genre"> {{genre}} </option>
             </select>
         </div>
     </header>
@@ -21,6 +18,9 @@ export default {
             selected: "All",
         }
     },
+    props: {
+        genres: Array,
+    }
 }
 </script>
 
