@@ -1,6 +1,5 @@
 <template>
     <main>
-        <DiscsFilter @getResults="filteredDiscsArr"/>
         <section id="discs">
             <ArtistsDisc
             v-for="disc,i in showFiltered" :key="i"
@@ -11,7 +10,6 @@
 </template>
 
 <script>
-import DiscsFilter from "./DiscsFilter.vue";
 import ArtistsDisc from "./ArtistsDisc.vue";
 import axios from "axios";
 
@@ -19,7 +17,9 @@ export default {
     name: 'AppMain',
     components: {
         ArtistsDisc,
-        DiscsFilter,
+    },
+    props: {
+        selectedGenre: String,
     },
     data() {
         return {
@@ -43,19 +43,15 @@ export default {
                 this.discsArr = apiObj.data.response;
             })
         },
-        // save child variable in parent data
-        filteredDiscsArr(gotSelected) {
-            this.chosenGenre = gotSelected;
-        }
     },
     computed: {
         // check array to get only related results
         showFiltered() {
-            if(this.chosenGenre === "All") {
+            if(this.selectedGenre === "All") {
                 return this.discsArr;
             }
             return this.discsArr.filter((item) => {
-                if(item.genre.toLowerCase() === this.chosenGenre.toLowerCase()){
+                if(item.genre === this.selectedGenre){
                     return this.discsArr
                 }
             })
