@@ -2,8 +2,8 @@
     <header>
         <img src="@/assets/spotify-logo.png" alt="spotify logo">
         <div class="filter">
-            <select v-model="selected" @change="$emit('getResults', selected)">
-                <option selected value="All">All</option>
+            <select v-model="userChosenGenre" @change="$emit('getResults', userChosenGenre)">
+                <option value="All">All</option>
                 <option v-for="genre, i in genres" :key="i" :value="genre"> {{genre}} </option>
             </select>
         </div>
@@ -15,10 +15,11 @@ export default {
     name: 'AppHeader',
     data() {
         return {
-            selected: "All",
+            userChosenGenre: "All",
         }
     },
     props: {
+        // return genres to parent(App)
         genres: Array,
     }
 }
@@ -27,31 +28,26 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
     header {
-        height: 80px;
+        height: 60px;
         padding: 0 30px;
-        background-color: #303A45;
+        background-color: var(--clr-primary-500);
         display: flex;
         justify-content: space-between;
         align-items: center;
         & img {
-            height: 80%;
+            height: 70%;
         }
-    }
-    .filter {
-        display: flex;
-        justify-content: center;
-        margin: 2rem 0;
     }
 
     select {
-        font-size: 1rem;
+        font-size: .9rem;
         width: 20ch;
         padding: .25em .5em;
-        background-color: inherit;
-        color: #fff;
-        border: 2px solid;
+        background-color: var(--clr-primary-800);
+        border: 1px solid;
+        cursor: pointer;
         option {
-            background-color: #212D3A;
-        }
+            outline-style: none;
+        }        
     }
 </style>

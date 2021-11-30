@@ -1,7 +1,7 @@
 <template>
     <div class="card-disc">
         <div>
-            <img :src="discInfo.poster" :alt="discInfo.title">
+            <img :src="discInfo.poster" :alt="discInfo.title + ' album'">
             <h3> {{discInfo.title}}</h3>
         </div>
         <div class="disc-info">
@@ -26,24 +26,33 @@ export default {
         display: flex;
         flex-flow: column nowrap;
         justify-content: space-between;
-        background-color: #303A45;
-        padding: 1.5em;
-        min-height: 38ch;
+        background-color: var(--clr-primary-500);
+        font-size: 1.2rem;
+        padding: 1em;
+        min-height: 30ch;
         text-align: center;
+        position: relative;
+        &:hover {
+            bottom: .5rem;
+            cursor: pointer;
+        }
+        &:hover img{
+            filter: brightness(.8);
+        }
         & img {
             width: 100%;
             aspect-ratio: 1;
             min-width: 120px;
         }
         & h3 {
-            color: #fff;
             margin-top: 1rem;
         }
     }
     .disc-info {
+        font-size: .9rem;
+        margin-top: 1.5em;
         & span {
             display: block;
-            color: #79756F;
         }
     }
 </style>

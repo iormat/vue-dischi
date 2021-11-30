@@ -19,6 +19,7 @@ export default {
         ArtistsDisc,
     },
     props: {
+        // return selectedGenre to parent(App)
         selectedGenre: String,
     },
     data() {
@@ -71,9 +72,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
     main {
-        background-color: #212D3A;
+        background-color: var(--clr-primary-800);
         padding: 50px 0;
-        height: 100vh;
+        height: calc(100vh - 120px);
         overflow: auto;
     }
     #discs {
@@ -81,6 +82,6 @@ export default {
         margin: 0 auto;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        gap: 1.5rem
+        gap: 1rem
     }
 </style>

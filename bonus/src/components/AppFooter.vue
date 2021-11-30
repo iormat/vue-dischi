@@ -11,9 +11,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
     footer {
-        height: 80px;
+        height: 60px;
         padding: 0 30px;
-        background-color: #303A45;
+        background-color: var(--clr-primary-500);
         display: flex;
         align-items: center;
     }
